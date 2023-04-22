@@ -1,6 +1,7 @@
 package org.example;
 
 import java.io.StringBufferInputStream;
+import java.nio.file.Path;
 import java.util.*;
 
 /**
@@ -14,9 +15,11 @@ public class BiathlonAthlete {
     /**
      * method for adding an athlete and we return here a list of athletes
      */
-    public void addAthlete (Athlete athlete) {
+    public void addAthlete ( Athlete athlete) {
         athleteList.add(athlete);
     }
+
+
 
     /**
      * method for sorting the list of athletes and print them in the sorted order
