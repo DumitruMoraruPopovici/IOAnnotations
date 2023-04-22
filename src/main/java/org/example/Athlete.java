@@ -37,34 +37,6 @@ public class Athlete  {
 
     }
 
-    public int getNumberId() {
-        return numberId;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getCountryCode() {
-        return countryCode;
-    }
-
-    public String getSkiTimeResult() {
-        return skiTimeResult;
-    }
-
-    public String getFirstShootingRange() {
-        return firstShootingRange;
-    }
-
-    public String getSecondShootingRange() {
-        return secondShootingRange;
-    }
-
-    public String getThirdShootingRange() {
-        return thirdShootingRange;
-    }
-
     /**
      * Method to calculate total penalties for athlete and returns the total amount of second he looses
      */

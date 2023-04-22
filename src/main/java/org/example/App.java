@@ -1,11 +1,11 @@
 package org.example;
 
+import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.Comparator;
+import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Scanner;
+import java.util.Set;
 
 /**
  * DESCRIPTION - Ski Biathlon Standings
@@ -55,33 +55,32 @@ import java.util.stream.Collectors;
  * use at least 1 Enum (in any situation) and at least 2 Annotations (they don't need to be custom)
  */
 public class App {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws Exception {
        BiathlonAthlete myBiathlon = new BiathlonAthlete();
-/**
- * reading and maping from file in to athlete objects
- */
-       Path path = Path.of("file.csv");
-        List<Athlete> athletesList =  Files.lines(path).map(App::getAthlete)
+        /**
+         * REading the file
+         */
+       Scanner csvReader = new Scanner(new File("file.csv"));
+       csvReader.useDelimiter(",");
+       while (csvReader.hasNext()) {
+           System.out.println(csvReader.next());
 
-                .collect(Collectors.toList());
-        System.out.println(athletesList);
-        myBiathlon.addAthlete(athletesList.get(0));
-        myBiathlon.addAthlete(athletesList.get(1));
-        myBiathlon.addAthlete(athletesList.get(2));
+       }
+       csvReader.close();
 
-        int penalties = myBiathlon.athleteList.get(0).calculatePenalties();
+
+        Athlete athlete2 = new Athlete(1,"Dtu", "UK","30:08", "xoxox","xxx","xox");
+        Athlete athlete3 = new Athlete(4,"Dtuyt", "UK","29:08", "xxxxx","xxx","xox");
+        Athlete athlete1 = new Athlete(12,"Dutu", "UK","30:12", "xxxox","xxx","xox");
+        int penalties = athlete1.calculatePenalties();
         System.out.println(penalties);
-        String totalTime = myBiathlon.athleteList.get(0).calculateFinalTimeResult();
+        String totalTime = athlete1.calculateFinalTimeResult();
         System.out.println(totalTime);
-
+       myBiathlon.addAthlete(athlete1);
+       myBiathlon.addAthlete(athlete2);
+       myBiathlon.addAthlete(athlete3);
        myBiathlon.displayAthletesByTotalTime();
 
-
-    }
-
-    private static Athlete getAthlete(String line) {
-        String[] values = line.split(",");
-        return new Athlete(Integer.parseInt(values[0]), values[1], values[2], values[3], values[4], values[5], values[6]);
 
     }
 }
